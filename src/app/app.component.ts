@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -20,11 +21,12 @@ export class AppComponent implements OnInit {
 
   datadoughnut: any;
 
+  status = false;
+
+
 
   ngOnInit() {
-
-
-
+  
     this.http.get<any>('https://data.covid19india.org/v4/min/timeseries.min.json').subscribe(data => {
       
       const dates: string[] = [];
@@ -221,9 +223,10 @@ export class AppComponent implements OnInit {
 
       }
     })
+  }
 
-
-
+  addToggle(){
+    this.status = !this.status
   }
 
 }
